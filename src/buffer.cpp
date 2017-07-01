@@ -365,7 +365,7 @@ void Buffer::setup_gl_buffer() {
     }
 
     if(channels == 1) {
-        tex_format = GL_RED;
+        tex_format = GL_LUMINANCE;
     } else if(channels == 2) {
         tex_format = GL_RG;
     }
