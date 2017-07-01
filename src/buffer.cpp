@@ -368,9 +368,15 @@ void Buffer::setup_gl_buffer() {
         tex_format = GL_RED;
     } else if(channels == 2) {
         tex_format = GL_RG;
+    }
+      else if(channels == 3 && (tex_type == GL_UNSIGNED_BYTE || tex_type == GL_UNSIGNED_SHORT)){
+        tex_format = GL_BGR;
     } else if(channels == 3) {
         tex_format = GL_RGB;
-    } else if(channels == 4) {
+    } else if(channels == 4 && (tex_type == GL_UNSIGNED_BYTE || tex_type == GL_UNSIGNED_SHORT)){
+        tex_format = GL_BGRA;
+    }
+      else if(channels == 4) {
         tex_format = GL_RGBA;
     }
 

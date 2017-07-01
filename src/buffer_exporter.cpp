@@ -62,6 +62,10 @@ void export_bitmap(const char *fname, const Buffer *buffer, int channels)
 
     const int bytes_per_line = width_i * 4;
     QImage output_image(processed_buffer.get(), width_i, height_i, bytes_per_line, QImage::Format_RGBA8888);
+    if((buffer->type == Buffer::BufferType::UnsignedShort || buffer->type == Buffer::BufferType::UnsignedByte) && (channels == 3 || channels == 4))
+    {
+        output_image.rgbSwapped();
+    }
     output_image.save(fname, "png");
 }
 
